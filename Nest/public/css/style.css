@@ -1,0 +1,507 @@
+/* Modern Home Rental Styling - StayNest */
+
+body{
+    background-color: rgb(136, 107, 107);
+    font-family: "Plus Jakarta Sans", sans-serif  !important;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.container{
+  flex: 1;   
+}
+
+/* navbar */
+.fa-compass{
+    color: #222222;
+    font-size: 1.8rem;
+}
+.navbar{
+    height: 4.5rem;
+    background-color: white;
+    border-bottom: 1px solid #ebebeb !important;
+    padding: 0.5rem 2rem;
+}
+.navbar-brand {
+    padding: 0;
+    margin-right: 2rem;
+}
+.nav-link{
+    color: #181818 !important;
+    border: none !important;
+    background: none !important;
+    padding: 0.5rem 0.8rem;
+    margin: 0 0.2rem;
+    font-size: 0.9rem;
+}
+.nav-link:hover {
+    background-color: #f7f7f7 !important;
+    border-radius: 2rem;
+}
+.navbar-nav {
+    gap: 0.5rem;
+}
+
+/* Search Bar Styles */
+.search-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 2.5rem;
+    padding: 0.3rem 0.3rem 0.3rem 1rem;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.search-box:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.search-box:focus-within {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: #222;
+}
+
+.search-input {
+    border: none !important;
+    padding: 0.5rem 0.8rem !important;
+    width: 250px;
+    font-size: 0.9rem;
+    height: 36px;
+    background: transparent !important;
+}
+
+.search-input:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none;
+}
+
+.btn-search {
+    background: #222222 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-search:hover {
+    background: #000000 !important;
+    transform: scale(1.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-search i {
+    font-size: 0.8rem;
+    color: white;
+}
+
+
+/* crad */
+.listing-card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100%;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text p{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: .2;
+    background-color: aliceblue;
+}
+
+
+/* foooter */
+ .f-info-links a{
+    text-decoration: none;
+    color: #222222;
+ }
+ .f-info-socials , .f-info-links{
+    width: 100%;
+ }
+ .f-info-socials {
+    margin-right: .5rem;
+    font-size: 1.5rem;
+ }
+ .f-info-brand{
+    font-size: 1rem;
+ }
+ .f-info-links a:hover{
+    text-decoration: underline;
+ }
+ .f-info{
+    text-align: center;
+     height: 8rem;
+    background-color: gainsboro;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+ }
+ /* show image */
+ .show-container {
+    padding: 2rem 0;
+}
+
+.show-header {
+    margin-bottom: 1.5rem;
+}
+
+.show-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #222222;
+}
+
+.show-image-wrapper {
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.show-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.show-info {
+    padding: 1rem 0;
+}
+
+.show-owner {
+    font-size: 1rem;
+    color: #222222;
+    margin-bottom: 1rem;
+}
+
+.show-owner span {
+    font-style: italic;
+    font-weight: 500;
+}
+
+.show-description {
+    font-size: 1rem;
+    color: #484848;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.show-details {
+    padding: 1rem 0;
+    border-top: 1px solid #ebebeb;
+}
+
+.show-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 0.5rem;
+}
+
+.show-price span {
+    font-weight: 400;
+    color: #717171;
+}
+
+.show-location {
+    font-size: 0.95rem;
+    color: #717171;
+}
+
+.show-location i {
+    margin-right: 0.5rem;
+    color: #222222;
+}
+
+.show-actions {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid #ebebeb;
+}
+
+.show-map-section {
+    padding: 2rem 0;
+}
+
+.show-map-section h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #222222;
+}
+
+#map {
+    height: 300px;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.show-review-form {
+    padding: 1.5rem 0;
+}
+
+.show-review-form h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #222222;
+}
+
+.show-reviews {
+    padding: 1.5rem 0;
+}
+
+.show-reviews h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #222222;
+}
+
+.review-card {
+    background: #f7f7f7;
+    border-radius: 1rem;
+    padding: 1.2rem;
+    height: 100%;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.review-header h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #222222;
+    margin: 0;
+}
+
+.review-stars {
+    margin: 0;
+}
+
+.review-comment {
+    font-size: 0.9rem;
+    color: #484848;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+}
+.btns{
+    display: flex;
+    gap: 1rem;
+}
+.show-btn{
+    justify-content: center;
+}
+.show-card{
+    padding: 0 !important;
+    border: none !important;
+}
+.show-card .card-img-top{
+    border-radius: 1rem !important;
+}
+
+/* Star Rating Styles */
+.star-rating {
+    direction: rtl;
+    display: inline-flex;
+    font-size: 3rem;
+    gap: 0.2rem;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+    color: #FFD700;
+}
+
+.star-display {
+    font-size: 1.5rem;
+    display: inline-flex;
+    gap: 0.1rem;
+}
+
+.review-stars {
+    font-size: 2rem;
+    display: flex;
+    gap: 0.2rem;
+    margin-top: 0.5rem;
+}
+
+.star-filled {
+    color: #FFD700;
+}
+
+.star-empty {
+    color: #ddd;
+}
+
+/* Map Styles */
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Custom Popup Styles */
+.custom-popup .leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-popup .leaflet-popup-content {
+    margin: 15px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.custom-popup .leaflet-popup-tip {
+    background: white;
+}
+
+/* Filters Styles */
+#filters {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 1rem 0;
+    scrollbar-width: none;
+}
+
+#filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    opacity: 0.6;
+    border-bottom: 2px solid transparent;
+    min-width: fit-content;
+    text-decoration: none;
+    color: inherit;
+}
+
+.filter:hover {
+    opacity: 1;
+    border-bottom: 2px solid #333;
+    text-decoration: none;
+}
+
+.filter.active {
+    opacity: 1;
+    border-bottom: 2px solid #333;
+}
+
+.filter i,
+.filter lord-icon {
+    font-size: 1.3rem;
+    color: #222222;
+}
+
+.filter:hover i,
+.filter.active i,
+.filter:hover lord-icon,
+.filter.active lord-icon {
+    color: #222222;
+}
+
+.filter span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #717171;
+}
+
+.filter:hover span,
+.filter.active span {
+    color: #333;
+}
+
+/* Tax Toggle Styles */
+.tax-toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.2rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+}
+
+.tax-toggle span {
+    color: #222;
+    font-weight: 400;
+}
+
+.tax-toggle .form-check {
+    margin: 0;
+}
+
+.tax-toggle .form-check-input {
+    cursor: pointer;
+    width: 3rem;
+    height: 1.5rem;
+}
+
+.tax-toggle .form-check-input:checked {
+    background-color: #222;
+    border-color: #222;
+}

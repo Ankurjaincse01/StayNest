@@ -1,0 +1,203 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  .owner-type-section {
+    margin-bottom: 2rem;
+  }
+  
+  .owner-type-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 0.5rem;
+  }
+  
+  .category-section {
+    margin: 2rem 0;
+  }
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  .category-card {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 0.8rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: white;
+  }
+  .category-card:hover {
+    border-color: #222;
+    background-color: #f7f7f7;
+  }
+  .category-card.selected {
+    border-color: #222;
+    background-color: #f0f0f0;
+  }
+  .category-card i {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+    color: #222;
+  }
+  .category-card span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #222;
+  }
+  .category-input {
+    display: none;
+  }
+</style>
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h3>Edit your listing</h3>
+    <form method="post" action="/listings/<%=  listing._id%>?_method=put" enctype="multipart/form-data" novalidate class="needs-validation">
+      <!-- Owner Type Selection -->
+      <div class="owner-type-section">
+        <label class="form-label">Owner Type</label>
+        <select name="listing[ownerType]" class="owner-type-select" required>
+          <option value="">Select owner type</option>
+          <option value="Individual" <%= listing.ownerType === "Individual" ? "selected" : "" %>>Individual</option>
+          <option value="Property Manager" <%= listing.ownerType === "Property Manager" ? "selected" : "" %>>Property Manager</option>
+          <option value="Real Estate Agency" <%= listing.ownerType === "Real Estate Agency" ? "selected" : "" %>>Real Estate Agency</option>
+          <option value="Hotel/Resort" <%= listing.ownerType === "Hotel/Resort" ? "selected" : "" %>>Hotel/Resort</option>
+          <option value="Business Owner" <%= listing.ownerType === "Business Owner" ? "selected" : "" %>>Business Owner</option>
+        </select>
+      </div>
+
+      <!-- Category Selection -->
+      <div class="category-section">
+        <label class="form-label">Which of these best describes your place?</label>
+        <div class="category-grid">
+          <% const categories = [
+            { name: "Villa", icon: "fa-house" },
+            { name: "Farm House", icon: "fa-tractor" },
+            { name: "Pool House", icon: "fa-person-swimming" },
+            { name: "Rooms", icon: "fa-bed" },
+            { name: "Flat", icon: "fa-building" },
+            { name: "PG", icon: "fa-user-group" },
+            { name: "Cabins", icon: "fa-campground" },
+            { name: "Beachfront", icon: "fa-umbrella-beach" }
+          ]; %>
+          
+          <% categories.forEach(cat => { %>
+            <label class="category-card <%= listing.category === cat.name ? "selected" : "" %>">
+              <input type="radio" name="listing[category]" value="<%= cat.name %>" class="category-input" required <%= listing.category === cat.name ? "checked" : "" %>>
+              <i class="fa-solid <%= cat.icon %>"></i>
+              <span><%= cat.name === "Cabins" ? "Cabin" : cat.name %></span>
+            </label>
+          <% }); %>
+        </div>
+        <div class="invalid-feedback">
+          Please select a category for your listing
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Tittle</label>
+        <input
+          type="text"
+          name="listing[title]"
+          value="<%= listing.title%>"
+          class="form-control"
+          required
+        />
+          <div class="valid-feedback">
+      Looks good!
+    </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea type="text" name="listing[description]" class="form-control" required>
+    <%= listing.description%></textarea>
+   <div class="invalid-feedback">
+      Description must requried
+    </div>
+      </div>
+
+      <div class="mb-3">
+        Original Listing Image <br />
+        <img src="<%= originalImageUrl %>" />
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload New Image</label>
+        <input
+          name="listing[image]"
+          type="file"
+          class="form-control"
+        />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            name="listing[price]"
+            value="<%= listing.price %>"
+            class="form-control"
+            required
+          />
+           <div class="invalid-feedback">
+      Please enter a vaild Price
+    </div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="location" class="form-label">Location</label>
+          <input
+            type="text"
+            name="listing[location]"
+            value="<%= listing.location%>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">
+      Location should be vaild
+    </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="country" class="form-label">Country</label>
+        <input
+          type="text"
+          name="listing[country]"
+          value="<%= listing.country%>"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">
+     Country should be vaild
+    </div>
+      </div>
+
+      <button class="btn btn-dark edit-btn mt-3">Edit</button>
+    </form>
+  </div>
+</div>
+<script>
+  // Handle category card selection
+  const categoryCards = document.querySelectorAll('.category-card');
+  const categoryInputs = document.querySelectorAll('.category-input');
+  
+  categoryCards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      // Remove selected class from all cards
+      categoryCards.forEach(c => c.classList.remove('selected'));
+      // Add selected class to clicked card
+      card.classList.add('selected');
+      // Check the radio input
+      categoryInputs[index].checked = true;
+    });
+  });
+</script>
+<script src="/js/script.js"></script>

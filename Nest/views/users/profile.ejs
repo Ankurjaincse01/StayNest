@@ -1,0 +1,38 @@
+<%- include("../layouts/boilerplate") %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">My Profile</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label"><strong>Username:</strong></label>
+            <p class="form-control-plaintext"><%= user.username %></p>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label"><strong>Email:</strong></label>
+            <p class="form-control-plaintext"><%= user.email %></p>
+          </div>
+
+          <% if(user.name) { %>
+            <div class="mb-3">
+              <label class="form-label"><strong>Full Name:</strong></label>
+              <p class="form-control-plaintext"><%= user.name %></p>
+            </div>
+          <% } %>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/user/profile" class="btn btn-warning">Edit Profile</a>
+            <a href="/listings" class="btn btn-secondary">Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("../layouts/boilerplate") %>

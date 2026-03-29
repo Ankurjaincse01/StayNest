@@ -1,0 +1,228 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  .owner-type-section {
+    margin-bottom: 2rem;
+  }
+  
+  .owner-type-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 0.5rem;
+  }
+  
+  .category-section {
+    margin: 2rem 0;
+  }
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  .category-card {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 0.8rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: white;
+  }
+  .category-card:hover {
+    border-color: #222;
+    background-color: #f7f7f7;
+  }
+  .category-card.selected {
+    border-color: #222;
+    background-color: #f0f0f0;
+  }
+  .category-card i {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+    color: #222;
+  }
+  .category-card span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #222;
+  }
+  .category-input {
+    display: none;
+  }
+</style>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <h3>Create New Listing</h3>
+    <form action="/listings" method="post" enctype="multipart/form-data" novalidate class="needs-validation">
+      
+      <!-- Owner Type Selection -->
+      <div class="owner-type-section">
+        <label class="form-label">Owner Type</label>
+        <select name="listing[ownerType]" class="owner-type-select" required>
+          <option value="">Select owner type</option>
+          <option value="Individual">Individual</option>
+          <option value="Property Manager">Property Manager</option>
+          <option value="Real Estate Agency">Real Estate Agency</option>
+          <option value="Hotel/Resort">Hotel/Resort</option>
+          <option value="Business Owner">Business Owner</option>
+        </select>
+      </div>
+
+      <!-- Category Selection -->
+      <div class="category-section">
+        <label class="form-label">Which of these best describes your place?</label>
+        <div class="category-grid">
+          <label class="category-card">
+            <input type="radio" name="listing[category]" value="Villa" class="category-input" required>
+            <i class="fa-solid fa-house"></i>
+            <span>Villa</span>
+          </label>
+          <label class="category-card">
+            <input type="radio" name="listing[category]" value="Farm House" class="category-input" required>
+            <i class="fa-solid fa-tractor"></i>
+            <span>Farm House</span>
+          </label>
+          <label class="category-card">
+            <input type="radio" name="listing[category]" value="Pool House" class="category-input" required>
+            <i class="fa-solid fa-person-swimming"></i>
+            <span>Pool House</span>
+          </label>
+          <label class="category-card">
+            <input type="radio" name="listing[category]" value="Rooms" class="category-input" required>
+            <i class="fa-solid fa-bed"></i>
+            <span>Rooms</span>
+          </label>
+          <label class="category-card">
+            <input type="radio" name="listing[category]" value="Flat" class="category-input" required>
+            <i class="fa-solid fa-building"></i>
+            <span>Flat</span>
+          </label>
+          <label class="category-card">
+            <input type="radio" name="listing[category]" value="PG" class="category-input" required>
+            <i class="fa-solid fa-user-group"></i>
+            <span>PG</span>
+          </label>
+          <label class="category-card">
+            <input type="radio" name="listing[category]" value="Cabins" class="category-input" required>
+            <i class="fa-solid fa-campground"></i>
+            <span>Cabin</span>
+          </label>
+          <label class="category-card">
+            <input type="radio" name="listing[category]" value="Beachfront" class="category-input" required>
+            <i class="fa-solid fa-umbrella-beach"></i>
+            <span>Beachfront</span>
+          </label>
+        </div>
+        <div class="invalid-feedback">
+          Please select a category for your listing
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Tittle</label>
+        <input
+          type="text"
+          name="listing[title]"
+          placeholder="enter your title "
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">
+      Looks good!
+    </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          type="text"
+          name="listing[description]"
+          placeholder="enter your description"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">
+      Description must requried
+    </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Listing Image</label>
+        <input
+          name="listing[image]"
+          type="file"
+          class="form-control"
+        />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            name="listing[price]"
+            placeholder="enter price "
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">
+      Please enter a vaild Price
+    </div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="location" class="form-label">Location</label>
+          <input
+            type="text"
+            name="listing[location]"
+            placeholder="enter location"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">
+      Location should be vaild
+    </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="country" class="form-label">Country</label>
+        <input
+          type="text"
+          name="listing[country]"
+          placeholder="enter country"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">
+     Country should be vaild
+    </div>
+      </div>
+
+      <button class="btn btn-dark">Add</button>
+      <br /><br />
+    </form>
+  </div>
+</div>
+
+<script>
+  // Handle category card selection
+  const categoryCards = document.querySelectorAll('.category-card');
+  const categoryInputs = document.querySelectorAll('.category-input');
+  
+  categoryCards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      // Remove selected class from all cards
+      categoryCards.forEach(c => c.classList.remove('selected'));
+      // Add selected class to clicked card
+      card.classList.add('selected');
+      // Check the radio input
+      categoryInputs[index].checked = true;
+    });
+  });
+</script>
